@@ -18,7 +18,7 @@
             <header>
             <!-- Navbar -->
                 <div class="navbar navbar-light bg-dark bg-red-100 py-3 d-flex shadow-md">
-                    <a  href="<?php  echo base_url ('interview/public/employee/add')?>" class="text-light text-decoration-none">WAMCO</a>
+                    <a  href="<?php  echo base_url ('interview/public/employee/add')?>" class="text-light text-decoration-none">WAMCO HR System</a>
                 </div> 
                 
                 <!-- Nav links -->
@@ -49,7 +49,8 @@
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
-                                <tr>
+
+                            <tr>
                                     <th>ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
@@ -58,35 +59,43 @@
                                     <th>Designation</th>
                                     <th>Action</th>
                                 </tr>
+
+                            <?php 
+                            if (!empty($employees)) {
+                              
+                                foreach ($employees as $employee){     
+
+                            ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Arusham</td>
-                                    <td>Hussain</td>
-                                    <td>019322332</td>
-                                    <td>aru@aru.com</td>
-                                    <td>ND</td>
+                                    <td><?php echo $employee['id']?></td>
+                                    <td><?php echo $employee['first_name']?></td>
+                                    <td><?php echo $employee['last_name']?></td>
+                                    <td><?php echo $employee['phone']?></td>
+                                    <td><?php echo $employee['email']?></td>
+                                    <td><?php echo $employee['designation']?></td>
                                     <td>
                                         <div class="row d-flex justify-content-around">
-                                            <a href="" class="btn btn-primary">edit</a>
+                                            <a href="<?php echo base_url('interview/public/employee/update/'.$employee['id']) ?>" class="btn btn-primary">edit</a>
                                             <a href="" class="btn btn-danger">delete</a>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                <td>1</td>
-                                    <td>Arusham</td>
-                                    <td>Hussain</td>
-                                    <td>019322332</td>
-                                    <td>aru@aru.com</td>
-                                    <td>ND</td>
-                                    <td>
-                                        <div class="row d-flex justify-content-around">
-                                            <a href="" class="btn btn-primary">edit</a>
-                                            <a href="" class="btn btn-danger">delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
+
+                            <?php
+                                }
+                            }else{ ?>
+                            <tr>
+                                    <td>No records found</td>
+                            </tr>
+                            <?php }?>
+
                             </table>
+
+                  
+
+                            
+
+                            
                         </div>
                     </div>
                 </div>

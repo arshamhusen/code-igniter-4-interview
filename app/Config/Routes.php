@@ -37,7 +37,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/employees', 'Employee::index');
 $routes->get('/employees/add', 'Employee::add');
 $routes->post('/employees/add', 'Employee::add');
-$routes->get('/employees/add', 'Employee::update');
+$routes->get('/employees/update/(:num)', 'Employee::update/$1');
 
 
 /*
